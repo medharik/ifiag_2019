@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#parent {
+  width: 1000px;
+  height: 400px;
+  background: greenyellow;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  /* flex-direction: column-reverse; */
+}
+.enfant {
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+}

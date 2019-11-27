@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+main {
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  background: rgb(228, 223, 223);
+  display: flex;
+}
+.map {
+  background: rgb(247, 211, 128);
+}
+
+.form {
+}
+.coord {
+}
+.enfant {
+  border: 1px solid black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.se {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+}

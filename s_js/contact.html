@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto shadow p-2 mt-2">
+          <form action="http://google.fr">
+            <div class="alert alert-danger " style="display: none"></div>
+            <div class="form-group">
+              <label for="np">Nom & prenom: (*) </label>
+              <input
+                type="text"
+                class="form-control r"
+                id="np"
+                autocomplete="off"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email : (*) </label>
+              <input type="text" class="form-control r" id="email" />
+            </div>
+            <div class="form-group">
+              <label for="passe">Mot de passe : (*) </label>
+              <input type="password" class="form-control r" id="passe" />
+            </div>
+            <div class="form-group">
+              <label for="conf">confirmation </label>
+              <input type="password" class="form-control" id="conf" />
+            </div>
+            <div class="text-center row">
+              <button
+                onclick=" valider()"
+                type="button"
+                class="btn btn-primary col-md-6 mx-auto"
+              >
+                S'inscrire
+              </button>
+            </div>
+            <small class="text-danger">(*) champs requis</small>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="contact.js"></script>
+  </body>
+</html>

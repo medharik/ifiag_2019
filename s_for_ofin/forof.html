@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select name="pays" id="pays" onchange="vp(this)">
+      <option value="" selected></option>
+      <option value="maroc">maroc</option>
+      <option value="france">france</option>
+    </select>
+    <select name="ville" id="ville">
+      <option value=""></option>
+    </select>
+
+    <script>
+      function vp(pays) {
+        let v = document.querySelector("#ville");
+        let p = { maroc: ["casa", "rabat"], france: ["paris", "lille"] };
+        v.innerHTML = "";
+        for (ev of p[pays.value]) {
+          v.innerHTML += "<option>" + ev + "</option>";
+        }
+      }
+    </script>
+  </body>
+</html>

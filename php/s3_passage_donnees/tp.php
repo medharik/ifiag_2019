@@ -4,7 +4,6 @@ $ttc=0;
 if(isset($_GET['ttc'])){
     $ttc=$_GET['ttc'];// ?ttc=225   
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

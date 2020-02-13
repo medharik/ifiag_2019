@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/radialgradientback"
+    android:orientation="vertical"
+    android:padding="16dp"
+
+    tools:context="com.example.ifiag.appimc.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/lform"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edtaille"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Votre taille en m"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/edpoids"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Votre Poids en Kg"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:onClick="valider"
+            android:id="@+id/bok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/holo_green_dark"
+            android:padding="10dp"
+            android:text="Valider"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tinterpretaion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Interpretation"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tmaladie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Risque de Maladie"
+            android:textColor="?attr/colorPrimaryDark"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+
+        <ImageView
+            android:id="@+id/imageimc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@mipmap/icon1" />
+    </FrameLayout>
+
+</LinearLayout>

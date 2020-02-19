@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #parent {
+        width: 600px;
+        height: 100vh;
+        margin: auto;
+        display: flex;
+      }
+      #child {
+        width: 400px;
+        margin: auto;
+        padding: 10px;;
+      }
+      .b {
+        border: 2px solid black;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent" class="b">
+      <div id="child" class="b">
+
+        <div class="alert"></div>
+        <form action="test.html">
+          <table align="center">
+            <tr>
+              <td>Matricule</td>
+              <td><input type="text" name="m" id="m" /></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button type="button" onclick="valider()">valider</button></td>
+            </tr>
+          </table>
+      </div>
+    </div>
+    <hr />
+   
+    </form>
+  </body>
+  <script>
+    function valider() {
+      let m = document.querySelector("#m");
+      let a = document.querySelector(".alert");
+      let model = /^[0-9]{1,4}[ |/]{0,}[a-zA-Z]{1}[ |/][0-9]{2}$/;
+      if (!model.test(m.value)) {
+        a.innerHTML = "Matricule invalide";
+    }else{
+        a.innerHTML = "ok";
+
+      }
+    }
+  </script>
+</html>

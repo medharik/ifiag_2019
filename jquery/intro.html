@@ -61,7 +61,7 @@
       $("button").click(function(event) {
         event.preventDefault();
         let modelEmail = /^[a-z]{1,}@ifiag\.ma$/;
-        let modelPasse = /^[a-z]{2,}/;
+        let modelPasse = /^[a-z_]{4,}[0-9._]{4,}/;
         $(".alert").html("");
         if (!modelEmail.test($("#email").val())) {
           $(".alert")

@@ -1,0 +1,6 @@
+WAMP  = windows APACHE ( WEB SERVER )  MYSQL ( SGBDR SERVER )  PHP (MOTEUR D'execution de commande PHP)
+LAMP = A (NGINX) + M + P
+MAMP
+XAMPP
+LARAGON (WINDOWS)
+NGROK

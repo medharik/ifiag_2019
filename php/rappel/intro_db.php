@@ -19,5 +19,5 @@
 //exemple de connexion avec PDO
   $cnx= new PDO("mysql:host=localhost;dbname=db_if",'root','');
   $rp=$cnx->prepare("insert into produit (libelle , prix ) values (?,?)");
-$rp->execute(['hp dv 7',9000]);
+  $rp->execute(['hp dv 7',9000]);
 ?>

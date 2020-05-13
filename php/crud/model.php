@@ -11,14 +11,14 @@ $cnx= new PDO("mysql:host=localhost;dbname=db_if;charset=utf8",'root','');
 return $cnx;
 }
 // ajout d'un produit dans la base de donnees : 
-function ajouter($libelle,$prix){
+//ajouter("hp",9000,"test2.png");
+function ajouter($libelle,$prix,$chemin=""){
  // connexion db
   $cnx= connecter_db();
  // preparer la requete (sql)  sur cnx
-$rp=$cnx->prepare("insert into produit(libelle,prix) values (?,?)");
-// executer la requete preparee
-$rp->execute([$libelle,$prix]);
-
+    $rp=$cnx->prepare("insert into produit(libelle,prix,chemin) values (?,?,?)");
+    // executer la requete preparee
+    $rp->execute([$libelle,$prix,$chemin]);
 }
 
 //supprimer
@@ -70,7 +70,9 @@ function all(){
     
     }
 
+    // ALTER TABLE `produit` ADD `chemin` VARCHAR(255) NULL DEFAULT NULL 
 
+    
 
 
 

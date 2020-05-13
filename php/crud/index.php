@@ -10,6 +10,9 @@ if(isset($_GET['op'])) {
  if($op=="store"){
 $notice="Ajout effectué avec succès";
  }
+ if($op=="update"){
+$notice="La Mise à jours  a été   effectuée avec succès";
+ }
  if($op=="delete"){
 $notice="Suppression effectuée avec succès";
 $classe="alert-danger";
@@ -32,7 +35,6 @@ $classe="alert-danger";
     <div class="container">
 <div class="alert alert-info my-2 <?=$classe?>">
 <?=$notice?>
-
 </div>
 <a href="create.php" class="btn btn-primary my-3 ">Nouveau produit</a>
 
@@ -40,6 +42,7 @@ $classe="alert-danger";
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th>Image</th>
       <th scope="col">Libelle</th>
       <th scope="col">Prix</th>
       <th scope="col">Actions</th>
@@ -50,13 +53,21 @@ $classe="alert-danger";
     
     <tr>
       <th scope="row"><?=$p['id']?></th>
+      <th scope="row">
+      <?php 
+       if(!empty($p['chemin'])) 
+       $chemin= $p['chemin'];
+       else $chemin= 'https://placehold.it/200';
+      ?>
+      <img src="<?=$chemin?>" width="150" alt="<?=$p['libelle']?>">
+      </th>
       <td><?=$p['libelle']?></td>
       <td><?=$p['prix']?></td>
       <td>
       
       <a href="delete.php?id=<?=$p['id'];?>" class="btn btn-sm btn-danger" onclick="return confirm('supprimer?')" >Supprimer</a>
       <a href="show.php?id=<?=$p['id'];?>" class="btn btn-sm btn-info"  >Consulter</a>
-      <a href="show.php?id=<?=$p['id'];?>" class="btn btn-sm btn-warning"  >Editer</a>
+      <a href="edit.php?id=<?=$p['id'];?>" class="btn btn-sm btn-warning"  >Editer</a>
       
       </td>
     </tr>

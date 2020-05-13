@@ -72,6 +72,34 @@ function all(){
 
     // ALTER TABLE `produit` ADD `chemin` VARCHAR(255) NULL DEFAULT NULL 
 
+//  $infos=$_FILES['chemin'];
+    function uploader($infos){
+      
+$tmp=$infos['tmp_name'];
+$name=$infos['name'];
+$taille=filesize($tmp);//taille du fichier en octect 
+$path_parts=pathinfo($name);// 4 infos : dir_name , basename , extension , file_name
+$extension=$path_parts['extension'];
+// var_dump($path_parts['extension']);
+// le nom du fichier doit etre unique et ne contient pas de caracteres speciaux 
+$new_name=md5(time()."_".rand(0,99999).$name).".$extension";
+$chemin="images/$new_name";
+// verifier si fichier est image
+$autorise=['jpg','png','gif','webp','jpeg'];
+$max_size=8*1024*1024;
+if(! in_array($extension,$autorise)){
+die("ce n'est pas une image");
+}else if(!move_uploaded_file($tmp,$chemin)){
+die("une erreur est survenue lors de l'upload du fichier");
+}else if($taille>$max_size) {
+die("La taille de ce fichier ".round($taille/(1024*1024),2)."Mo est plus grande que celle autorisée (8Mo)");
+}
+
+return $chemin;
+
+
+
+    }
     
 
 

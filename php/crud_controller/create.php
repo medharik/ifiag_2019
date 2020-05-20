@@ -1,3 +1,4 @@
+<?php include("model.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +23,24 @@
                         <label for="prix">Prix : </label>
                         <input type="text" name="prix" id="prix" class="form-control">
                     </div>
+                    <div class="form-group">
+                        <label for="type">Emplacement : </label>
+                        <input type="text" name="type" id="type" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="categorie_id">Categorie : </label>
+                        <select type="text" name="categorie_id" id="categorie_id" class="form-control">
+                            <?php
+                            $categories = all("categorie");
+                            foreach ($categories as $c) {
+                            ?>
+                                <option value="<?= $c['id'] ?>"><?= $c['nom'] ?></option>
+                            <?php } ?>
+
+                        </select>
+
+                    </div>
+
                     <div class="form-group"> <label for="chemin">Image : </label>
                         <input type="file" name="chemin" id="chemin" class="form-control">
                     </div>

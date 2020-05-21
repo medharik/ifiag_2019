@@ -13,7 +13,6 @@
     <?php
     include("../_menu.php");
     ?>
-
     <div class="container">
         <div class="row">
             <div class="col-md-6 shadow mx-auto p-3 my-3">
@@ -41,19 +40,14 @@
                                 <option value="<?= $c['id'] ?>"><?= $c['nom'] ?></option>
                             <?php } ?>
 
-                        </select>
+                            <select>
 
                     </div>
-
                     <div class="form-group"> <label for="chemin">Image : </label>
                         <input type="file" name="chemin" id="chemin" class="form-control">
                     </div>
-
-
                     <button type="submit" class="btn btn-primary">Valider</button>
-
                 </form>
-
 
             </div>
         </div>

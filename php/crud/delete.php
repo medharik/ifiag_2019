@@ -6,7 +6,6 @@ $id=$_GET['id'];
 
 $produit=find($id);
 unlink($produit['chemin']);
-
 supprimer($id);
 
 

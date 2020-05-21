@@ -16,6 +16,9 @@ $produit = find($id);
 </head>
 
 <body>
+    <?php
+    include("../_menu.php");
+    ?>
 
     <div class="container">
         <div class="row">
@@ -32,6 +35,11 @@ $produit = find($id);
                         <label for="prix">Prix : </label>
                         <input type="text" name="prix" id="prix" class="form-control" value="<?= $produit['prix'] ?>">
                     </div>
+                    <div class="form-group">
+                        <label for="chemin">Chemin : </label>
+                        <input type="file" name="chemin" id="chemin" class="form-control" value="<?= $produit['prix'] ?>">
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Valider</button>
 
                 </form>

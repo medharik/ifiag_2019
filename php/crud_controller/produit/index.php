@@ -1,12 +1,11 @@
 <?php
-require("model.php");
+include("model.php");
 $produits = all();
 $notice = "";
 $classe =  "d-none";
 if (isset($_GET['op'])) {
   $classe = "d-block";
   $op = $_GET['op'];
-
   if ($op == "store") {
     $notice = "Ajout effectué avec succès";
   }
@@ -31,7 +30,9 @@ if (isset($_GET['op'])) {
 </head>
 
 <body>
-
+  <?php
+  include("../_menu.php");
+  ?>
 
   <div class="container">
     <div class="alert alert-info my-2 <?= $classe ?>">
@@ -46,12 +47,13 @@ if (isset($_GET['op'])) {
           <th>Image</th>
           <th scope="col">Libelle</th>
           <th scope="col">Prix</th>
+          <th scope="col">Categorie</th>
+          <th scope="col">Type</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
         <?php foreach ($produits as $p) { ?>
-
           <tr>
             <th scope="row"><?= $p['id'] ?></th>
             <th scope="row">
@@ -64,9 +66,15 @@ if (isset($_GET['op'])) {
             </th>
             <td><?= $p['libelle'] ?></td>
             <td><?= $p['prix'] ?></td>
+            <td><?php
+                $id = $p['categorie_id'];
+                $categorie =   find($id, "categorie");
+                echo $categorie['nom'];
+                ?></td>
+            <td><?= $p['type'] ?></td>
             <td>
 
-              <a href="delete.php?id=<?= $p['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('supprimer?')">Supprimer</a>
+              <a href="controller.php?action=delete&id=<?= $p['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('supprimer?')">Supprimer</a>
               <a href="show.php?id=<?= $p['id']; ?>" class="btn btn-sm btn-info">Consulter</a>
               <a href="edit.php?id=<?= $p['id']; ?>" class="btn btn-sm btn-warning">Editer</a>
 

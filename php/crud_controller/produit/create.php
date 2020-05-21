@@ -10,6 +10,10 @@
 </head>
 
 <body>
+    <?php
+    include("../_menu.php");
+    ?>
+
     <div class="container">
         <div class="row">
             <div class="col-md-6 shadow mx-auto p-3 my-3">

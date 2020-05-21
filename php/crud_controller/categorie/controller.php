@@ -4,18 +4,17 @@ extract($_GET); //action , $action=$_GET['action'];
 extract($_POST);
 switch ($action) {
     case 'store':
-        $chemin = uploader($_FILES['chemin']);
-        ajouter($libelle, $prix,  $categorie_id, $type, $chemin);
+
+        ajouter_categorie($nom);
         break;
 
     case 'update':
-        modifier($libelle, $prix, $id);
+        modifier_categorie($nom, $id);
         break;
 
     case 'delete':
-        $produit = find($id);
-        unlink($produit['chemin']);
-        supprimer($id);
+
+        supprimer($id, "categorie");
         break;
     default:
         die("Page introuvable!!!");

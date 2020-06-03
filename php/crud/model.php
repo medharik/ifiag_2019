@@ -73,8 +73,10 @@ function all(){
     // ALTER TABLE `produit` ADD `chemin` VARCHAR(255) NULL DEFAULT NULL 
 
 //  $infos=$_FILES['chemin'];
-function uploader($infos){
-      
+function uploader($infos,$dossier="images"){
+      if(!is_dir($dossier)){
+mkdir($dossier,777,true);
+      }
 $tmp=$infos['tmp_name'];
 $name=$infos['name'];
 $taille=filesize($tmp);//$infos['size'];//taille du fichier en octet 
@@ -83,14 +85,8 @@ $extension=strtolower($path_parts['extension']);
 // var_dump($path_parts['extension']);
 // le nom du fichier doit etre unique et ne contient pas de caracteres speciaux 
 $new_name=md5(time().rand(0,99999).$name).".$extension";
-// ifiag => r5hdjhjdsjdkjkddjdxkdk
-// r5hdjhjdsjdkjkddjdxkdk => ?
 
-//hash =/ irreversible
-// //cryptqge =/ reversible
-// ifiag=>dhsdh
-// dhsdh => ifiag
-$chemin="images/$new_name";
+$chemin="$dossier/$new_name";
 // verifier si fichier est image
 $autorise=['jpg','png','gif','webp','jpeg'];
 

@@ -20,15 +20,15 @@
                 <form action="controller.php?action=store" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="libelle">Libellé : </label>
-                        <input type="text" name="libelle" id="libelle" class="form-control">
+                        <input value="<?= (isset($_COOKIE['libelle'])) ? $_COOKIE['libelle'] : '' ?>" type="text" name="libelle" id="libelle" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="prix">Prix : </label>
-                        <input type="text" name="prix" id="prix" class="form-control">
+                        <input value="<?= (isset($_COOKIE['prix'])) ? $_COOKIE['prix'] : '' ?>" type="text" name="prix" id="prix" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="type">Emplacement : </label>
-                        <input type="text" name="type" id="type" class="form-control">
+                        <input value="<?= (isset($_COOKIE['type'])) ? $_COOKIE['type'] : '' ?>" type="text" name="type" id="type" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="categorie_id">Categorie : </label>

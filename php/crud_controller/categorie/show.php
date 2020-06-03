@@ -2,6 +2,8 @@
 include("model.php");
 $id = $_GET['id'];
 $categorie = find($id);
+// $produits = produit_categorie_id($id);
+$produits = produits($id);
 // var_dump($categorie);
 ?>
 <!DOCTYPE html>
@@ -31,6 +33,19 @@ $categorie = find($id);
 
             </div>
         </div>
+        <!--liste des produits de cette categorie   -->
+        <div class="row mt-5    ">
+            <?php foreach ($produits as $p) { ?>
+                <div class="col-md-3 border text-center">
+                    <img src="../produit/<?= $p['chemin'] ?>" class="img-fluid">
+                    <h3><?= $p['libelle'] ?></h3>
+                    <h4><?= $p['prix'] ?>dhs</h4>
+                </div>
+            <?php } ?>
+
+        </div>
+        <!--  fin liste  -->
+
     </div>
 
 </body>

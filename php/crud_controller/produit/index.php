@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['email'])) {
+  header("location:../login.php");
+} else if (!($_SESSION['email'] == "test" && $_SESSION['passe'] == '1234')) {
+  header("location:../login.php");
+}
 include("model.php");
 $produits = all();
 $notice = "";
@@ -67,9 +73,12 @@ if (isset($_GET['op'])) {
             <td><?= $p['libelle'] ?></td>
             <td><?= $p['prix'] ?></td>
             <td><?php
-                $id = $p['categorie_id'];
-                $categorie =   find($id, "categorie");
+                // $id = $p['categorie_id'];
+                // $categorie =   find($id, "categorie");
+                // echo $categorie['nom'];
+                $categorie = categorie($p['categorie_id']);
                 echo $categorie['nom'];
+
                 ?></td>
             <td><?= $p['type'] ?></td>
             <td>

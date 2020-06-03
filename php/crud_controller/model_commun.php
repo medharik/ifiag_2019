@@ -80,3 +80,55 @@ function uploader($infos)
 
     return $chemin;
 }
+function produit_categorie()
+{
+    try {
+        //Connexion à la base de donnée
+        $cnx = connecter_db();
+        //Préparation de la requête
+        $rq = $cnx->prepare("select p.* , c.nom from produit p join categorie c on c.id=p.categorie_id
+        ");
+
+        //Exécution de la requête
+        $rq->execute();
+        $r = $rq->fetchAll();
+        return $r;
+    } catch (PDOException $e) {
+        die("Erreur de jointure " . $e->getMessage());
+    }
+}
+function categorie_nombre_produit()
+{
+    try {
+        //Connexion à la base de donnée
+        $cnx = connecter_db();
+        //Préparation de la requête
+        $rq = $cnx->prepare("select categorie_id as id, nom, count(*) as nombre_produit , sum(p.prix) as somme , max(p.prix) as max_prix , min(p.prix) as min_prix, avg(p.prix) as moyen from produit p join categorie c on p.categorie_id=c.id group by categorie_id ");
+
+        //Exécution de la requête
+        $rq->execute();
+        $r = $rq->fetchAll();
+        return $r;
+    } catch (PDOException $e) {
+        die("Erreur de jointure " . $e->getMessage());
+    }
+}
+
+// les produits par categorie (id)
+//produit_categorie_id(1);
+function produit_categorie_id($categorie_id)
+{
+    try {
+        //Connexion à la base de donnée
+        $cnx = connecter_db();
+        //Préparation de la requête
+        $rq = $cnx->prepare("select * from produit where categorie_id=?   ");
+
+        //Exécution de la requête
+        $rq->execute([$categorie_id]);
+        $r = $rq->fetchAll();
+        return $r;
+    } catch (PDOException $e) {
+        die("Erreur de jointure " . $e->getMessage());
+    }
+}

@@ -1,4 +1,10 @@
-<?php include("model.php"); ?>
+<?php
+session_start();
+if (!($_SESSION['login'] == 'test'  && $_SESSION['passe'] == '1234')) {
+    header("location:../login.php");
+    die();
+}
+include("model.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +19,8 @@
     <?php
     include("../_menu.php");
     ?>
+    <h3>Bienvenue <?= $_SESSION['prenom'] ?></h3>
+
     <div class="container">
         <div class="row">
             <div class="col-md-6 shadow mx-auto p-3 my-3">
@@ -20,7 +28,11 @@
                 <form action="controller.php?action=store" method="post">
                     <div class="form-group">
                         <label for="nom">Nom : </label>
-                        <input type="text" name="nom" id="nom" class="form-control">
+                        <input value="<?php
+                                        if (isset($_COOKIE['nom'])) echo $_COOKIE['nom'];
+
+
+                                        ?>" type="text" name="nom" id="nom" class="form-control">
                     </div>
 
 

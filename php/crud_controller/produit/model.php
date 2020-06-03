@@ -28,3 +28,20 @@ function modifier($libelle, $prix, $categorie_id, $type, $id)
         die("Erreur de modification du produit " . $e->getMessage());
     }
 }
+
+// manyToone
+function categorie(int $categorie_id)
+{
+    try {
+        //Connexion à la base de donnée
+        $cnx = connecter_db();
+        //Préparation de la requête
+        $rq = $cnx->prepare("select * from categorie where id=?");
+        //Exécution de la requête
+        $rq->execute([$categorie_id]);
+        $r =   $rq->fetch();
+        return $r;
+    } catch (PDOException $e) {
+        die("Erreur de modification du produit " . $e->getMessage());
+    }
+}

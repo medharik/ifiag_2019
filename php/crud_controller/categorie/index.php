@@ -1,6 +1,13 @@
 <?php
+session_start();
+if (!($_SESSION['login'] == 'test'  && $_SESSION['passe'] == '1234')) {
+  header("location:../login.php");
+  die();
+}
 include("model.php");
 $categories = all("categorie");
+// $categories = categorie_nombre_produit();
+
 $notice = "";
 $classe =  "d-none";
 if (isset($_GET['op'])) {
@@ -33,7 +40,10 @@ if (isset($_GET['op'])) {
 <body>
   <?php
   include("../_menu.php");
+
   ?>
+  <h3>Bienvenue <?= $_SESSION['prenom'] ?></h3>
+
 
   <div class="container">
     <div class="alert alert-info my-2 <?= $classe ?>">
@@ -46,6 +56,7 @@ if (isset($_GET['op'])) {
         <tr>
           <th scope="col">#</th>
           <th scope="col">Nom</th>
+          <th scope="col">Nombre de produit</th>
 
           <th scope="col">Actions</th>
         </tr>
@@ -56,6 +67,24 @@ if (isset($_GET['op'])) {
             <th scope="row"><?= $p['id'] ?></th>
 
             <td><?= $p['nom'] ?></td>
+            <td>Nombre de produit : <?php
+                                    $produits = produits($p['id']);
+                                    echo count($produits);
+                                    $somme = 0;
+                                    foreach ($produits as $e) {
+                                      $somme += $e['prix'];
+                                    }
+                                    echo "<br>la somme des prix :  $somme DHS";
+                                    ?>
+
+
+              <br>
+              <?php foreach ($produits as $e) { ?>
+                <span class="badge badge-primary">
+                  <?= $e['libelle']; ?>
+                </span>
+              <?php } ?>
+            </td>
 
             <td>
 

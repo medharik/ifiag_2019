@@ -132,3 +132,24 @@ function produit_categorie_id($categorie_id)
         die("Erreur de jointure " . $e->getMessage());
     }
 }
+function checker($login, $passe)
+{
+    // verifier l'existence  de l'user au niveau de la base de donnees
+    $cnx =  connecter_db();
+    $rp = $cnx->prepare("select * from users where login=? and passe = ? ");
+    $rp->execute([$login, $passe]);
+    $user = $rp->fetch();
+    //  si (resultat est ! empty )
+    //on enregistre des infos dans la session  (depuis le resultat de la requeste select)
+    if (!empty($user)) {
+        $_SESSION['login'] = $user['login'];
+        $_SESSION['passe'] = $user['passe'];
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['role'] = $user['role'];
+    } else {
+        header("location:login.php?cnx=no");
+        die();
+    }
+    //sinon : redirection vers le login.php (avec erreur)
+
+}

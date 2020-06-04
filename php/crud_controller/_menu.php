@@ -1,7 +1,15 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 define('URL', "http://" . $_SERVER['HTTP_HOST'] . "/if_2019/php/crud_controller/");
-// var_dump($_SERVER);
-//$_SERVER['HTTP_HOST']=localhost:83 ou ifiag.ma
+
+if (isset($_SESSION['login']) && isset($_SESSION['passe'])) {
+    checker($_SESSION['login'], $_SESSION['passe']);
+} else {
+    header("location:../login.php?cnx=erreur");
+}
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,16 +28,14 @@ define('URL', "http://" . $_SERVER['HTTP_HOST'] . "/if_2019/php/crud_controller/
             <li class="nav-item">
                 <a class="nav-link" href="<?= URL ?>categorie/index.php">Categories</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Options
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= URL ?>users/index.php">Comptes</a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= URL ?>deconnexion.php">Déconnexion</a>
+            </li>
+
         </ul>
     </div>
 </nav>

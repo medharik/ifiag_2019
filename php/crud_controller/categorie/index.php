@@ -1,9 +1,5 @@
 <?php
 session_start();
-if (!($_SESSION['login'] == 'test'  && $_SESSION['passe'] == '1234')) {
-  header("location:../login.php");
-  die();
-}
 include("model.php");
 $categories = all("categorie");
 // $categories = categorie_nombre_produit();
@@ -42,7 +38,6 @@ if (isset($_GET['op'])) {
   include("../_menu.php");
 
   ?>
-  <h3>Bienvenue <?= $_SESSION['prenom'] ?></h3>
 
 
   <div class="container">

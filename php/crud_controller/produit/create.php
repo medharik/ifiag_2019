@@ -1,4 +1,5 @@
-<?php include("model.php"); ?>
+<?php include('../model_commun.php');
+include("model.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 

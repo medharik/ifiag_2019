@@ -1,4 +1,5 @@
 <?php
+include('../model_commun.php');
 include("model.php");
 $produits = all();
 $notice = "";

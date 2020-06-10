@@ -1,8 +1,10 @@
 <?php
+include('../model_commun.php');
 include("model.php");
 // $id=$_GET['id'];
 extract($_GET); //$id=$_GET['id']
-$produit = find($id);
+$produit = find($id, "produit");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,9 +38,23 @@ $produit = find($id);
                         <input type="text" name="prix" id="prix" class="form-control" value="<?= $produit['prix'] ?>">
                     </div>
                     <div class="form-group">
-                        <label for="chemin">Chemin : </label>
-                        <input type="file" name="chemin" id="chemin" class="form-control" value="<?= $produit['prix'] ?>">
+                        <label for="type">Tag : </label>
+                        <input type="text" name="type" id="type" class="form-control" value="<?= $produit['type'] ?>">
                     </div>
+                    <div class="form-group">
+                        <label for="categorie">Categorie: </label>
+                        <select type="text" name="categorie_id" id="categorie_id" class="form-control">
+                            <?php
+                            $categories = all("categorie");
+
+                            foreach ($categories as $c) {
+                            ?>
+                                <option <?php if ($produit['categorie_id'] == $c['id']) echo "selected";   ?> value="<?= $c['id'] ?>"><?= $c['nom'] ?></option>
+                            <?php } ?>
+
+                            <select>
+                    </div>
+
 
                     <button type="submit" class="btn btn-primary">Valider</button>
 

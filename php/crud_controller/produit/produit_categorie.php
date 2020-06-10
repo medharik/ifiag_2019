@@ -1,5 +1,7 @@
 <?php
+include('../model_commun.php');
 include("model.php");
+
 $produits = produit_categorie();
 $notice = "";
 $classe =  "d-none";

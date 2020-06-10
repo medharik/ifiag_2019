@@ -39,6 +39,19 @@ function all($table = "produit")
     $resultat = $rp->fetchAll(PDO::FETCH_ASSOC); // PHP PDO FETCH  MODE
     return $resultat;
 }
+//
+function findBy($table = "produit", $condition = "")
+{
+    //Connexion à la base de donnée
+    $cnx = connecter_db();
+    //Préparation de la requête
+    $rp = $cnx->prepare("select * from $table where $condition order by id desc ");
+    //Exécution de la requête
+    $rp->execute();
+    $resultat = $rp->fetchAll(PDO::FETCH_ASSOC); // PHP PDO FETCH  MODE
+    return $resultat;
+}
+
 
 //recuperer un categorie par son id 
 //find(1,"categorie")
@@ -79,6 +92,18 @@ function uploader($infos)
     }
 
     return $chemin;
+}
+
+function categorie_ayant_de_produit()
+{
+    //Connexion à la base de donnée
+    $cnx = connecter_db();
+    //Préparation de la requête
+    $rp = $cnx->prepare("select * from categorie where id in (select categorie_id from produit) ");
+    //Exécution de la requête
+    $rp->execute();
+    $resultat = $rp->fetchAll(PDO::FETCH_ASSOC); // PHP PDO FETCH  MODE
+    return $resultat;
 }
 function produit_categorie()
 {

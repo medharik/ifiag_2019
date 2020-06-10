@@ -1,5 +1,5 @@
 <?php
-include("../model_commun.php");
+// include("../model_commun.php");
 function ajouter($libelle, $prix, $categorie_id, $type = "", $chemin = "")
 {
     try {
@@ -9,6 +9,7 @@ function ajouter($libelle, $prix, $categorie_id, $type = "", $chemin = "")
         $rp = $cnx->prepare("insert into produit(libelle,prix,categorie_id,type,chemin) values (?,?,?,?,?)");
         // executer la requete preparee
         $rp->execute([$libelle, $prix, $categorie_id, $type, $chemin]);
+        return $cnx->lastInsertId();
     } catch (PDOException $e) {
         die("Erreur d'ajout du produit " . $e->getMessage());
     }

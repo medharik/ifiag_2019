@@ -1,4 +1,5 @@
 <?php
+include('../model_commun.php');
 include("model.php");
 extract($_GET); //action , $action=$_GET['action'], $id;
 extract($_POST); //$libelle, $prix
@@ -26,7 +27,7 @@ switch ($action) {
         break;
 
     case 'update':
-        modifier($libelle, $prix, $id);
+        modifier($libelle, $prix, $categorie_id, $type, $id);
         break;
 
     case 'delete':

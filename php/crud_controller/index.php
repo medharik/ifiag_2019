@@ -65,7 +65,7 @@ $produits = all("produit");
                                             <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-2.jpg">
                                         </a>
                                         <ul class="social">
-                                            <li><a href="" data-tip="Consulter ce produit"><i class="fa fa-search"></i></a></li>
+                                            <li><a href="details.php?id=<?= $p['id'] ?>" data-tip="Consulter ce produit"><i class="fa fa-search"></i></a></li>
                                             <li><a href="" data-tip="Ajouter aux preferences "><i class="fa fa-shopping-bag"></i></a></li>
                                             <li><a href="" data-tip="Ajouter au panier"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>

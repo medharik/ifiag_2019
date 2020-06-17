@@ -128,7 +128,10 @@ function categorie_nombre_produit()
         //Connexion à la base de donnée
         $cnx = connecter_db();
         //Préparation de la requête
-        $rq = $cnx->prepare("select categorie_id as id, nom, count(*) as nombre_produit , sum(p.prix) as somme , max(p.prix) as max_prix , min(p.prix) as min_prix, avg(p.prix) as moyen from produit p join categorie c on p.categorie_id=c.id group by categorie_id ");
+        $rq = $cnx->prepare("select categorie_id as id, nom, count(*) as nombre_produit ,
+         sum(p.prix) as somme , max(p.prix) as max_prix , min(p.prix) as min_prix,
+          avg(p.prix) as moyen from produit p join categorie c on p.categorie_id=c.id 
+          group by categorie_id ");
 
         //Exécution de la requête
         $rq->execute();

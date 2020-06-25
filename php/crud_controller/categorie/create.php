@@ -1,9 +1,4 @@
 <?php
-session_start();
-if (!($_SESSION['login'] == 'test'  && $_SESSION['passe'] == '1234')) {
-    header("location:../login.php");
-    die();
-}
 include("model.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +14,8 @@ include("model.php"); ?>
     <?php
     include("../_menu.php");
     ?>
-    <h3>Bienvenue <?= $_SESSION['prenom'] ?></h3>
+    <h3>Bienvenue <?php //$_SESSION['prenom'] 
+                    ?></h3>
 
     <div class="container">
         <div class="row">

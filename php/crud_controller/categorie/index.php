@@ -61,7 +61,7 @@ if (isset($_GET['op'])) {
           <tr>
             <th scope="row"><?= $p['id'] ?></th>
 
-            <td><?= $p['nom'] ?></td>
+            <td><?= htmlentities($p['nom']) ?></td>
             <td>Nombre de produit : <?php
                                     $produits = produits($p['id']);
                                     echo count($produits);

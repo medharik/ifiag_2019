@@ -17,7 +17,7 @@
 class Produit
 {
     public $id;
-    public $libelle;
+    protected $libelle; // visible par les classes filles 
     private  $prix;
 
     public function __construct(String $libelle = "", float $prix = 0, int $id = 0)
@@ -89,5 +89,11 @@ class Produit
     public function getPrix()
     {
         return $this->prix;
+    }
+    public function afficher()
+    {
+        echo "Libelle est " . $this->libelle . "<br>";
+        echo "Prix  est " . $this->prix . "<br>";
+        echo "id est " . $this->id . "<br>";
     }
 }
